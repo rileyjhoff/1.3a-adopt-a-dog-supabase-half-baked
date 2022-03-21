@@ -19,17 +19,17 @@ window.addEventListener('load', async() => {
 dogSearch.addEventListener('input', async() => {
     const dogs = await getDogs();
     if (dogSearch.value !== '') {
+        dogListContainer.textContent = '';
         for (let dog of dogs) {
-            dogListContainer.textContent = '';
-            // const lowerCaseName = dog.name.toLowerCase();
-            if (dog.name.startsWith(dogSearch.value)) {
+            const lowerCaseName = dog.name.toLowerCase();
+            const lowerCaseSearch = dogSearch.value.toLowerCase();
+            if (lowerCaseName.startsWith(lowerCaseSearch) || lowerCaseName.includes(lowerCaseSearch)) {
                 const dogCard = renderDogCard(dog);
 
                 dogListContainer.append(dogCard);
             }
         }
-    }
-    if (dogSearch.value === '') {
+    } else {
         dogListContainer.textContent = '';
         for (let dog of dogs) {
             const dogCard = renderDogCard(dog);
