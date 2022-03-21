@@ -8,7 +8,7 @@ export async function getDogs() {
     const response = await client
         .from('dogs')
         .select('*');
-    // console.log(checkError(response));
+    console.log(checkError(response));
     // and return the response (checking for errors)
     return checkError(response);    
 }
