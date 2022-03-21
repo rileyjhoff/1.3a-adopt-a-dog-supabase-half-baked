@@ -2,7 +2,8 @@ import { getDogs } from './fetch-utils.js';
 import { renderDogCard } from './render-utils.js';
 
 const dogListContainer = document.getElementById('dog-list-container');
-const dogSearch = document.getElementById('dog-search');
+const dogNameSearch = document.getElementById('dog-name-search');
+const dogBreedSearch = document.getElementById('dog-breed-search');
 
 // on load
 window.addEventListener('load', async() => {
@@ -16,14 +17,37 @@ window.addEventListener('load', async() => {
     }
 });
 
-dogSearch.addEventListener('input', async() => {
+dogNameSearch.addEventListener('input', async() => {
     const dogs = await getDogs();
-    if (dogSearch.value !== '') {
+    if (dogNameSearch.value !== '') {
         dogListContainer.textContent = '';
         for (let dog of dogs) {
-            const lowerCaseName = dog.name.toLowerCase();
-            const lowerCaseSearch = dogSearch.value.toLowerCase();
-            if (lowerCaseName.startsWith(lowerCaseSearch) || lowerCaseName.includes(lowerCaseSearch)) {
+            const dogName = dog.name.toLowerCase();
+            const search = dogNameSearch.value.toLowerCase();
+            if (dogName.startsWith(search) || dogName.includes(search)) {
+                const dogCard = renderDogCard(dog);
+
+                dogListContainer.append(dogCard);
+            }
+        }
+    } else {
+        dogListContainer.textContent = '';
+        for (let dog of dogs) {
+            const dogCard = renderDogCard(dog);
+    
+            dogListContainer.append(dogCard);
+        }
+    }
+});
+
+dogBreedSearch.addEventListener('input', async() => {
+    const dogs = await getDogs();
+    if (dogBreedSearch.value !== '') {
+        dogListContainer.textContent = '';
+        for (let dog of dogs) {
+            const dogBreed = dog.breed.toLowerCase();
+            const search = dogBreedSearch.value.toLowerCase();
+            if (dogBreed.startsWith(search) || dogBreed.includes(search)) {
                 const dogCard = renderDogCard(dog);
 
                 dogListContainer.append(dogCard);
