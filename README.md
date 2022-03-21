@@ -10,7 +10,7 @@ Use [this template](https://github.com/alchemycodelab/half-baked-web-01-adopt-a-
 
 Here is the model for the `dogs` table
 
-![](./dogs-model.png)
+![supabase preview](./assets/dogs-model.png)
 
 ### Live Example:
 
@@ -32,3 +32,17 @@ For this deliverable you have been given a supabase database and some render fun
 | ASYNC: `getDog(id)` : return single dog from supabase                                        | 2      |
 | Detail page should get the id from the URL and use that id to fetch that dog from supabase.    | 1      |
 | Detail page should show the user details about the dog (including age, breed, and description) | 1      |
+
+##Plan
+
+- finishing writing async functions to fetch data from supabase for ALL dogs and a SINGLE dog in fetch-utils.js
+  - import the fetch ALL function to app.js
+- write on load event listener in app.js
+  - event listener has an async function that loops, renders, and appends ALL dogs
+    - calls render function from render-utils.js
+- write on load event listener in detail.js
+  - event listener has an async function that loops, renders, and appends a SINGLE dog
+    - calls render function from render-utils.js
+- make home page list of dogs clickable
+  - what we click should send us to a new page specific to a dog ID
+    - event listener in detail.js should get the correct supabase ID from the URL and display the correct dog detail
