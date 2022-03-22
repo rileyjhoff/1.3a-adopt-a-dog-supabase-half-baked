@@ -8,11 +8,12 @@ export function renderDogCard(dog) {
 
     p.textContent = dog.name;
     img.src = `./assets/${dog.breed}.jpeg`;
-    a.href = '' // link to the dog's detail page here
+    a.href = `./detail/?id=${dog.id}`; // link to the dog's detail page here
     
     div.append(p, img);
 
     a.append(div);
+    a.classList.add('hover');
 
     return a;
 }
@@ -37,7 +38,7 @@ export function renderDogDetail(dog) {
     ageEl.textContent = `${dog.age} years old`;    
     ageEl.classList.add('age');
 
-    breedEl.textContent = dog.breed;
+    breedEl.textContent = dog.breed.charAt(0).toUpperCase() + dog.breed.slice(1, dog.breed.length);
     breedEl.classList.add('breed');
 
     ageAndBreedEl.classList.add('age-and-breed');
