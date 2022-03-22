@@ -13,6 +13,7 @@ export function renderDogCard(dog) {
     div.append(p, img);
 
     a.append(div);
+    a.classList.add('hover');
 
     return a;
 }

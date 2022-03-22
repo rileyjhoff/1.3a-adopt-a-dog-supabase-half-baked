@@ -141,3 +141,7 @@ p {
     margin: 20px;
     padding: 20px;
 }
+
+.hover:hover {
+    transform: scale(1.2);
+}
