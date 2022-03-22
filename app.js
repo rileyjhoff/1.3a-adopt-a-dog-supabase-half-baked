@@ -20,6 +20,7 @@ window.addEventListener('load', async() => {
 dogNameSearch.addEventListener('input', async() => {
     const dogs = await getDogs();
     if (dogNameSearch.value !== '') {
+        dogBreedSearch.disabled = true;
         dogListContainer.textContent = '';
         for (let dog of dogs) {
             const dogName = dog.name.toLowerCase();
@@ -31,6 +32,7 @@ dogNameSearch.addEventListener('input', async() => {
             }
         }
     } else {
+        dogBreedSearch.disabled = false;
         dogListContainer.textContent = '';
         for (let dog of dogs) {
             const dogCard = renderDogCard(dog);
@@ -43,6 +45,7 @@ dogNameSearch.addEventListener('input', async() => {
 dogBreedSearch.addEventListener('input', async() => {
     const dogs = await getDogs();
     if (dogBreedSearch.value !== '') {
+        dogNameSearch.disabled = true;
         dogListContainer.textContent = '';
         for (let dog of dogs) {
             const dogBreed = dog.breed.toLowerCase();
@@ -54,6 +57,7 @@ dogBreedSearch.addEventListener('input', async() => {
             }
         }
     } else {
+        dogNameSearch.disabled = false;
         dogListContainer.textContent = '';
         for (let dog of dogs) {
             const dogCard = renderDogCard(dog);
