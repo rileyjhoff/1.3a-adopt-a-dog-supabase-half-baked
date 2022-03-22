@@ -37,7 +37,7 @@ export function renderDogDetail(dog) {
     ageEl.textContent = `${dog.age} years old`;    
     ageEl.classList.add('age');
 
-    breedEl.textContent = dog.breed;
+    breedEl.textContent = dog.breed.charAt(0).toUpperCase() + dog.breed.slice(1, dog.breed.length);
     breedEl.classList.add('breed');
 
     ageAndBreedEl.classList.add('age-and-breed');
